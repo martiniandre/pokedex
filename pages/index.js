@@ -1,65 +1,59 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Container, Content, Image, Pokemon,PokemonName,Type } from '../styles/pokemon'
 
-export default function Home() {
+
+
+export default function Home({pokemons}) {
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    <Container>
+    <h1 style={{textAlign:"center"}}>Pokedex</h1>
+    <Content>
+      {pokemons.map((poke) => {
+        return(
+          <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
+        <section style={{background:"pink",margin:"5px 10px",padding:"6px 3px"}}>
+          <figure>
+          <Image src={poke.image} alt={poke.name}/>
+          </figure>
+          <PokemonName>{poke.name}</PokemonName>
+          <div>
+          {poke.data.types.map(types => {
+            const typeName = types.type.name
+            return(
+                <Type
+                 key={poke.name + typeName}
+                 >{typeName}
+                 </Type>
+            )
+          })}
+          </div>
+        </section>
+        </Pokemon>
+        )
+      }
+      )}
+    </Content>
+  </Container>
   )
 }
+export async function getStaticProps() {
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
+  const data = await resp.json()
+  const pokemons = await Promise.all(
+    data.results.map(async (poke,index) => {
+      const res = await fetch(poke.url)
+      const data = await res.json()
+      const image = `https://pokeres.bastionbot.org/images/pokemon/${index+1}.png`
+      const firstLetterUpperCase = poke.name.charAt(0).toUpperCase() + poke.name.slice(1)
+      return {
+        ...poke,
+        name: firstLetterUpperCase,
+        image,
+        data
+      }
+  }))
+  return {
+    props: {
+      pokemons
+    }, // will be passed to the page component as props
+}}

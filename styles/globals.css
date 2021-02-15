@@ -1,10 +1,14 @@
 html,
 body {
+  min-height: 100vh;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
 
 a {
   color: inherit;
@@ -14,3 +18,23 @@ a {
 * {
   box-sizing: border-box;
 }
+/* .normal{ color:"#A8A878" }
+.fire{ color:"#F08030" }
+.fighting{ color:"#C03028" }
+.water{ color:"#6890F0"}
+.flying{ color:"#A890F0" }
+.grass{ color:"#78C850" }
+.poison{ color:"#A040A0" }
+.eletric{ color:"#F8D030" }
+.ground{ color:"#E0C068" }
+.psychic{ color:"#F85888"}
+.rock{ color:"#B8A038" }
+.ice{ color:"#98D8D8" }
+.bug{ color:"#A8B820" }
+.dragon{ color:"#7038F8" }
+.ghost{ color:"#705898" }
+.dark{ color:"#705848" }
+.steel{ color:"#B8B8D0" }
+.fairy{ color:"#EE99AC" }
+ */
+
