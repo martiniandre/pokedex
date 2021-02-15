@@ -1,4 +1,5 @@
 import { Container, Content,PokemonName,Pokemon} from '../../styles/pokemon'
+import Image from 'next/image'
 
 
 
@@ -10,7 +11,11 @@ export default function Home({pokemons}) {
         <Content>
           <Pokemon href="/">
         <figure>
-          <img src={pokemons.image} alt="" style={{width: "350px",height:"350px"}}/>
+          <Image src={pokemons.image} 
+          alt={pokemon.name} 
+          width={350}
+          height={350}
+          />
         </figure>
             </Pokemon>
         </Content>
