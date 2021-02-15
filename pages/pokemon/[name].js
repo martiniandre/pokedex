@@ -4,14 +4,13 @@ import Image from 'next/image'
 
 
 export default function Home({pokemons}) {
-  console.log(pokemons)
   return (
     <Container >
         <PokemonName>{pokemons.name}</PokemonName>
         <Content>
           <Pokemon href="/">
         <figure>
-          <Image src={pokemons.image} 
+          <Image src={pokemon.image} 
           alt={pokemon.name} 
           width={350}
           height={350}
