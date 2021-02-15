@@ -10,8 +10,8 @@ export default function Home({pokemons}) {
         <Content>
           <Pokemon href="/">
         <figure>
-          <Image src={pokemon.image} 
-          alt={pokemon.name} 
+          <Image src={pokemons.image} 
+          alt={pokemons.name} 
           width={350}
           height={350}
           />
