@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-
-    background:black;
+    max-width:1130px;
+    margin:0 auto;
     min-height:100vh;
+    padding:30px;
     `
 export const ImageContainer = styled.section`
     text-align:center;
@@ -14,14 +15,15 @@ export const ImageContainer = styled.section`
 export const Image = styled.img`
     width: 100%;
     max-width:300px;
-    height:250px;
+    height:200px;
 
 `
 export const Information = styled.main`
     width: 90%;
     margin: 0 auto;
     padding:10px;
-    background:green;
+    background:#e90c0c;
+    border-radius:15px;
 `
 export const BaseInfo = styled.section`
     display:flex;
@@ -29,17 +31,30 @@ export const BaseInfo = styled.section`
 `
 export const PokemonName = styled.h1`
     font-size:1.4rem;
+    margin-right:10px;
 `
 export const Types = styled.span`
+    height:fit-content;
     width:fit-content;
-    padding:6px;
-    border: 10px;
     color:white;
-    background:black;
+    font-weight:bold;
+    background:#eb8282;
+    border-radius:10px;
+    padding:5px 10px;
+
+    &:nth-child(n+2){
+    margin-left:10px;
+    }
+
+    &:hover{
+        background: #eb4545;
+    }
 `
 export const Moves = styled.span`
     font-size:1rem;
     color: #c0bbbb;
+    margin-right:5px;
+    
 `
 export const OthersInfos = styled.section`
     display:flex;
@@ -49,4 +64,8 @@ export const OthersInfos = styled.section`
 `
 export const InfoData = styled.h2`
     font-size:1rem;
+`
+export const Flex = styled.div`
+    display:flex;
+    align-items:center;
 `

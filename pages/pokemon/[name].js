@@ -8,13 +8,14 @@ import {
   OthersInfos,
   Types,
   BaseInfo, 
-  InfoData} from '../../styles/specificPokemon'
+  InfoData,
+  Flex
+} from '../../styles/specificPokemon'
 
 
 
 
 export default function Home({pokemons}) {
-  console.log(pokemons.data.stats)
   return (
     <Container>
         <ImageContainer>
@@ -22,6 +23,7 @@ export default function Home({pokemons}) {
         </ImageContainer>
         <Information>
           <BaseInfo>
+          <Flex>
             <PokemonName>#{pokemons.data.id} {pokemons.name}</PokemonName>
             {pokemons.data.types.map(types => {
               const typeName = types.type.name
@@ -31,8 +33,11 @@ export default function Home({pokemons}) {
                 >{typeName}
                  </Types>
             )})}
-            Skiils:
-            {pokemons.data.abilities.map(abilities =><Moves keu={abilities.ability.name}>{abilities.ability.name}</Moves>)}
+          </Flex>
+          <Flex>
+            <Moves>Skiils: </Moves>
+            {pokemons.data.abilities.map(abilities =><Moves key={abilities.ability.name}>{abilities.ability.name}</Moves>)}
+          </Flex>
           </BaseInfo>
             {pokemons.data.stats.map(stats => (
               <OthersInfos key={stats.stat.name}>

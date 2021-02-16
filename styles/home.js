@@ -33,8 +33,8 @@ export const Container = styled.div`
 `
 export const Content = styled.section`
   display:grid;
-  grid-template-columns: repeat(4,minmax(200px, 1fr));
   flex-direction: row;
+  grid-template-columns: repeat(4,minmax(200px, 1fr));
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
@@ -47,11 +47,11 @@ export const Content = styled.section`
   }
   `
 export const Pokemon = styled(Link)`
-  margin: 8px 10px;
-  border-radius: 4px;
-  background: pink;
+  margin:8px 10px;
+  border-radius:4px;
+  background:white;
   padding: 8px 16px;
-  text-align: center;
+  text-align:center;
   max-width:350px;
   
   @media(max-width:425px){
