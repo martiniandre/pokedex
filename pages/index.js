@@ -1,9 +1,8 @@
-import { Container, Content, Image, Pokemon,PokemonName,Type } from '../styles/pokemon'
+import { Container, Content, Image, Pokemon,Number,PokemonName,Type } from '../styles/home'
 
 
 
 export default function Home({pokemons}) {
-
   return (
     <Container>
     <h1 style={{textAlign:"center"}}>Pokedex</h1>
@@ -11,10 +10,11 @@ export default function Home({pokemons}) {
       {pokemons.map((poke) => {
         return(
           <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
-        <section style={{background:"pink",margin:"5px 10px",padding:"6px 3px"}}>
-          <figure>
+        <section style={{background:"pink",margin:"5px 10px",padding:"6px 3px",position:"relative"}}>
+          <div style={{textAlign:"center"}}>
           <Image src={poke.image} alt={poke.name}/>
-          </figure>
+          </div>
+          <Number>#{poke.data.id}</Number>
           <PokemonName>{poke.name}</PokemonName>
           <div>
           {poke.data.types.map(types => {

@@ -45,38 +45,42 @@ export const Content = styled.section`
   @media(max-width:425px){
     grid-template-columns: repeat(2 ,minmax(100px,1fr));
   }
-`
+  `
 export const Pokemon = styled(Link)`
-  margin: 5px 10px;
+  margin: 8px 10px;
   border-radius: 4px;
   background: pink;
   padding: 8px 16px;
   text-align: center;
-
-
+  max-width:350px;
+  
   @media(max-width:425px){
     padding:4px 8px;
     margin:2px;
   }
+  `
+export const Number = styled.span`
+  font-size:0.7rem;
+  color:white;
+  position:absolute;
+  right:-10px;
+  top:-10px;
+  background:red;
+  height:30px;
+  width:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 `
-export const Figure = styled.figure`
+
+export const Image = styled.img`
   width: 100px;
   height:100px;
-  text-align: center;
+
   @media(max-width: 425px){
     height:50px;
     width:50px;
-    text-align:center;
-  }
-`
-export const Image = styled.img`
- width: 100px;
-  height:100px;
-  text-align: center;
-  @media(max-width: 425px){
-    height:50px;
-    width:50px;
-    text-align:center;
   }
 `
 
@@ -85,7 +89,7 @@ export const PokemonName = styled.span`
 `
 export const Type = styled.span`
   font-size: 1rem;
-
+  
   &:nth-child(n+2){
     margin-left:10px;
   }

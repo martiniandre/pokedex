@@ -38,3 +38,6 @@ a {
 .fairy{ color:"#EE99AC" }
  */
 
+#__next{
+  width: 100vw;
+}
