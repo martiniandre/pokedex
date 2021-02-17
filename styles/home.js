@@ -89,7 +89,9 @@ export const PokemonName = styled.span`
 `
 export const Type = styled.span`
   font-size: 1rem;
-  
+  &::first-letter{
+    text-transform:capitalize;
+  }
   &:nth-child(n+2){
     margin-left:10px;
   }

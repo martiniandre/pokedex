@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -5,6 +6,7 @@ export const Container = styled.div`
     margin:0 auto;
     min-height:100vh;
     padding:30px;
+    position:relative;
     `
 export const ImageContainer = styled.section`
     text-align:center;
@@ -54,6 +56,7 @@ export const Moves = styled.span`
     font-size:1rem;
     color: #c0bbbb;
     margin-right:5px;
+    border-bottom: 1px solid white;
     
 `
 export const OthersInfos = styled.section`
@@ -68,4 +71,7 @@ export const InfoData = styled.h2`
 export const Flex = styled.div`
     display:flex;
     align-items:center;
+`
+export const BackButton = styled(Link)`
+    position:absolute;
 `
