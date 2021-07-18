@@ -42,7 +42,13 @@ export const Pokemon = styled(Link)`
   }
 `;
 export const Background = styled.section`
-  background: ${props => props.color ? props.color : "pink"};
+  background: ${({ backColor }) => backColor.length > 1 ? (
+    `linear-gradient(${backColor[0]} 20%,${backColor[1]} 60%)`
+  ) : (`linear-gradient(${backColor[0]} 40%,#555 99%)`)};
+  border: ${({ backColor }) => backColor.length > 1 ? (
+    `3px solid ${backColor[1]}`
+  ) : (`3px solid ${backColor[0]}`)};
+  border-radius:10px;
   margin: 10px;
   padding: 6px 3px;
   position: relative;
@@ -50,6 +56,9 @@ export const Background = styled.section`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  cursor:pointer;
+
+
 
 `;
 export const Number = styled.span`
@@ -70,6 +79,7 @@ export const Number = styled.span`
 export const Image = styled.img`
   width: 100px;
   height: 100px;
+ 
 
   @media (max-width: 425px) {
     height: 50px;
@@ -88,12 +98,10 @@ export const Type = styled.span`
   padding:0 10px;
   color: white;
   font-weight:bold;
-  background:${({ color }) => color ? color : "none"};
+  background:${({ backColor }) => backColor ? backColor : "none"};
   border-radius:4px;
   
-  &::first-letter {
-    text-transform: capitalize;
-  }
+  
   &:nth-child(n + 2) {
     margin-left: 10px;
   }

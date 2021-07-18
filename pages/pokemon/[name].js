@@ -1,4 +1,4 @@
-import { getBackground } from "../../helpers/convertedTypes";
+import { getBackground, gradientBackground } from "../../helpers/convertedTypes";
 import {
   Container,
   Image,
@@ -14,12 +14,13 @@ import {
 } from "../../styles/specificPokemon";
 
 export default function Home({ pokemons }) {
+  const gradient = gradientBackground(pokemons);
   return (
     <Container color={() => getBackground(pokemons, 0.7)}>
       <ImageContainer>
         <Image src={pokemons.image} alt={pokemons.image} />
       </ImageContainer>
-      <Information color={() => getBackground(pokemons, 0.7)}>
+      <Information backColor={gradient}>
         <BaseInfo>
           <Flex>
             <PokemonName>
@@ -29,7 +30,7 @@ export default function Home({ pokemons }) {
               const typeName = types.type.name;
               return (
                 <Types
-                  color={() => getBackground(pokemons, 1, index)}
+                  backColor={() => getBackground(pokemons, 1, index)}
                   key={pokemons.name + typeName}
                 >
                   {typeName}

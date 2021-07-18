@@ -1,5 +1,5 @@
-import { getBackground } from "../helpers/convertedTypes";
-
+import LazyLoad from "react-lazyload";
+import { getBackground, gradientBackground } from "../helpers/convertedTypes";
 import {
   Container,
   Content,
@@ -13,28 +13,31 @@ import {
 
 export default function Home({ pokemons }) {
 
-
   return (
     <Container>
       <h1 style={{ textAlign: "center", color: "white" }}>Pokedex</h1>
       <Content>
         {pokemons.map((poke) => {
+          let gradient = gradientBackground(poke);
           return (
-            <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
-              <Background color={() => getBackground(poke, 0.7)}>
-                <div style={{ textAlign: "center" }}>
-                  <Image src={poke.image} alt={poke.name} />
-                </div>
-                <Number>#{poke.data.id}</Number>
-                <PokemonName>{poke.name}</PokemonName>
-                <div>
-                  {poke.data.types.map((types, index) => {
-                    const typeName = types.type.name;
-                    return <Type color={getBackground(poke, 1, index)} key={poke.name + typeName}>{typeName}</Type>;
-                  })}
-                </div>
-              </Background>
-            </Pokemon>
+            <LazyLoad height={200} key={poke.data.name}>
+
+              <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
+                <Background backColor={gradient}>
+                  <div style={{ textAlign: "center" }}>
+                    <Image src={poke.image} alt={poke.name} />
+                  </div>
+                  <Number>#{poke.data.id}</Number>
+                  <PokemonName>{poke.name}</PokemonName>
+                  <div>
+                    {poke.data.types.map((types, index) => {
+                      const typeName = types.type.name;
+                      return <Type backColor={getBackground(poke, 1, index)} key={poke.name + typeName}>{typeName}</Type>;
+                    })}
+                  </div>
+                </Background>
+              </Pokemon>
+            </LazyLoad>
           );
         })}
       </Content>

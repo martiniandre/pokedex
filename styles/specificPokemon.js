@@ -24,8 +24,12 @@ export const Information = styled.main`
     width: 90%;
     margin: 0 auto;
     padding:10px;
-    background: ${props => props.color ? props.color : "pink"};
+    background: ${({ backColor }) => backColor.length > 1 ? (
+        `linear-gradient(${backColor[0]} 20%,${backColor[1]} 90%)`
+    ) : (`linear-gradient(${backColor[0]} 40%,#222 99%)`)};
+    font-weight:bold;
     border-radius:15px;
+    
 `;
 export const BaseInfo = styled.section`
     display:flex;
@@ -41,7 +45,7 @@ export const Types = styled.span`
     width:fit-content;
     color:white;
     font-weight:bold;
-    background: ${props => props.color ? props.color : "pink"};
+    background: ${props => props.backColor ? props.backColor : "pink"};
     border-radius:10px;
     padding:5px 10px;
 
