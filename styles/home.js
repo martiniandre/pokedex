@@ -57,6 +57,9 @@ export const Background = styled.section`
   flex-direction: column;
   gap: 5px;
   cursor:pointer;
+&:hover{
+  transform:scale(1.05)
+}
 
 
 
@@ -95,10 +98,11 @@ export const PokemonName = styled.span`
 `;
 export const Type = styled.span`
   font-size: 1rem;
-  padding:0 10px;
+  padding:1px 10px;
   color: white;
   font-weight:bold;
   background:${({ backColor }) => backColor ? backColor : "none"};
+  box-shadow:1px 1px 4px 1px #333;
   border-radius:4px;
   
   
