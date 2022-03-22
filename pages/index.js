@@ -1,4 +1,3 @@
-import LazyLoad from "react-lazyload"
 import { getBackground, gradientBackground } from "../helpers/convertedTypes"
 import {
   Container,
@@ -19,37 +18,32 @@ export default function Home({ pokemons }) {
         {pokemons?.map((poke) => {
           let gradient = gradientBackground(poke)
           return (
-            <LazyLoad height={200} key={poke.data.name}>
-              <Pokemon
-                href={`pokemon/${poke.data.name}`}
-                alt=""
-                key={poke.name}
-              >
-                <Background backColor={gradient}>
-                  <div style={{ textAlign: "center" }}>
-                    <Image
-                      src={poke.data.sprites.front_default}
-                      alt={poke.name}
-                    />
-                  </div>
-                  <Number>#{poke.data.id}</Number>
-                  <PokemonName>{poke.name}</PokemonName>
-                  <div>
-                    {poke.data.types.map((types, index) => {
-                      const typeName = types.type.name
-                      return (
-                        <Type
-                          backColor={getBackground(poke, 1, index)}
-                          key={poke.name + typeName}
-                        >
-                          {typeName}
-                        </Type>
-                      )
-                    })}
-                  </div>
-                </Background>
-              </Pokemon>
-            </LazyLoad>
+            <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
+              <Background backColor={gradient}>
+                <div style={{ textAlign: "center" }}>
+                  <Im
+                    age
+                    src={poke.data.sprites.front_default}
+                    alt={poke.name}
+                  />
+                </div>
+                <Number>#{poke.data.id}</Number>
+                <PokemonName>{poke.name}</PokemonName>
+                <div>
+                  {poke.data.types.map((types, index) => {
+                    const typeName = types.type.name
+                    return (
+                      <Type
+                        backColor={getBackground(poke, 1, index)}
+                        key={poke.name + typeName}
+                      >
+                        {typeName}
+                      </Type>
+                    )
+                  })}
+                </div>
+              </Background>
+            </Pokemon>
           )
         })}
       </Content>

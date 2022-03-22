@@ -57,22 +57,8 @@ export default function Pokemon({ pokemon }) {
     </Container>
   )
 }
-export async function getStaticPaths() {
-  const resp = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`
-  )
-  const data = await resp.json()
-  const totalPaths = data.results.map((pokemon) => {
-    return { params: { name: pokemon.name } }
-  })
 
-  return {
-    paths: totalPaths,
-    fallback: "blocking", // See the "fallback" section below
-  }
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { name } = params
   const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
   const data = await resp.json()
@@ -87,11 +73,4 @@ export async function getStaticProps({ params }) {
       pokemon,
     }, // will be passed to the page component as props
   }
-}
-{
-  /*  <h1>{pokemons.id}</h1>
-     <h1>{pokemons.data.stats.map}</h1>
-     <h1>{pokemons.data.base_experience}</h1>
-     <h1>{pokemons.data.abilities.map}</h1>
-     <h1>{pokemons.data.abilities.map}</h1> */
 }
