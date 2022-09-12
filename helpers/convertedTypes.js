@@ -35,7 +35,7 @@ const convertHexToRGBA = (hexCode, opacity = 1) => {
 };
 
 export const getBackground = (pokemon, opacity = 1, index) => {
-    const { type } = pokemon.data.types[index ? index : 0];
+    const { type } = pokemon.types[index ? index : 0];
     let getType;
     pokemonType.map(pokeType => {
         if (!pokeType.name.includes(type.name)) return;
@@ -44,9 +44,9 @@ export const getBackground = (pokemon, opacity = 1, index) => {
     return getType;
 };
 export const gradientBackground = (pokemon) => {
-    const types = pokemon.data.types;
+    const types = pokemon.types;
     let getType = [];
-    pokemonType.map((pokeType, index) => {
+    pokemonType?.map((pokeType, index) => {
         types.map(t => {
             if (!pokeType.name.includes(t.type.name)) return;
             getType.push(convertHexToRGBA(pokeType.color, 0.8));

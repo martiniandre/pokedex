@@ -4,39 +4,20 @@ import Link from "next/link"
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  padding:10px;
   display: flex;
   flex-direction: column;
 `
 
 export const Content = styled.section`
   display: grid;
-  flex-direction: row;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
+  grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
   text-align: center;
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
-  }
-  @media (max-width: 425px) {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-  }
 `
 export const Pokemon = styled(Link)`
-  margin: 8px 10px;
-  border-radius: 4px;
-  background: white;
   padding: 8px 16px;
   text-align: center;
-  max-width: 350px;
-
-  @media (max-width: 425px) {
-    padding: 4px 8px;
-    margin: 2px;
-  }
+  background: white;
 `
 export const Background = styled.section`
   background: ${({ backColor }) =>
@@ -49,24 +30,20 @@ export const Background = styled.section`
       : `3px solid ${backColor[0]}`};
   border-radius: 10px;
   margin: 10px;
-  padding: 6px 3px;
   position: relative;
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  min-height: 180px;
   cursor: pointer;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `
 export const Number = styled.span`
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: white;
   position: absolute;
   right: -10px;
   top: -10px;
-  background: red;
+  background:#D7263D;
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -82,13 +59,18 @@ export const Image = styled.img`
 
 export const PokemonName = styled.span`
   font-size: 1.1rem;
-  margin-bottom: 10px;
   font-weight: bold;
+  display:block;
+  margin-bottom:10px;
   color: white;
+
+  &::first-letter{
+    text-transform: capitalize
+  }
 `
 export const Type = styled.span`
-  font-size: 1rem;
-  padding: 1px 10px;
+  font-size: 0.85rem;
+  padding: 3px 10px;
   color: white;
   font-weight: bold;
   background: ${({ backColor }) => (backColor ? backColor : "none")};

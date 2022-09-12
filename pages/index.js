@@ -10,38 +10,36 @@ import {
   Type,
 } from "../styles/home"
 
+
 export default function Home({ pokemons }) {
   return (
     <Container>
       <h1 style={{ textAlign: "center", color: "white" }}>Pokedex</h1>
       <Content>
-        {pokemons?.map((poke) => {
-          let gradient = gradientBackground(poke)
+        {pokemons?.map((pokemon) => {
+          let gradient = gradientBackground(pokemon)
           return (
-            <Pokemon href={`pokemon/${poke.data.name}`} alt="" key={poke.name}>
+            <Pokemon href={`pokemon/${pokemon.name}`} alt="" key={pokemon.name}>
               <Background backColor={gradient}>
                 <div style={{ textAlign: "center" }}>
-                  <Im
-                    age
-                    src={poke.data.sprites.front_default}
-                    alt={poke.name}
+                  <Image
+                    src={pokemon.sprites.front_default}
+                    alt={pokemon.name}
                   />
                 </div>
-                <Number>#{poke.data.id}</Number>
-                <PokemonName>{poke.name}</PokemonName>
-                <div>
-                  {poke.data.types.map((types, index) => {
+                <Number>#{pokemon.id}</Number>
+                <PokemonName>{pokemon.name}</PokemonName>
+                  {pokemon.types.map((types, index) => {
                     const typeName = types.type.name
                     return (
                       <Type
-                        backColor={getBackground(poke, 1, index)}
-                        key={poke.name + typeName}
+                        backColor={getBackground(pokemon, 1, index)}
+                        key={pokemon.name + typeName}
                       >
                         {typeName}
                       </Type>
                     )
                   })}
-                </div>
               </Background>
             </Pokemon>
           )
@@ -51,24 +49,20 @@ export default function Home({ pokemons }) {
   )
 }
 export async function getStaticProps() {
-  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
-  const data = await resp.json()
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=898`)
+  const {results} = await resp.json()
   const pokemons = await Promise.all(
-    data.results.map(async (poke, index) => {
-      const res = await fetch(poke.url)
-      const data = await res.json()
-      const firstLetterUpperCase =
-        poke.name.charAt(0).toUpperCase() + poke.name.slice(1)
-      return {
-        ...poke,
-        name: firstLetterUpperCase,
-        data,
-      }
-    })
+   results.map(async (pokemon) => {
+    const res = await fetch(pokemon.url)
+    const data = await res.json()
+
+    return data
+   })
   )
+
   return {
     props: {
       pokemons,
-    }, // will be passed to the page component as props
+    }
   }
 }
