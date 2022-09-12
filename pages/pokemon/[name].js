@@ -24,7 +24,7 @@ export default function Pokemon({ pokemon }) {
         <BaseInfo>
           <Flex>
             <PokemonName>
-              #{pokemon.id} {pokemon.name}
+              #{pokemon.order} {pokemon.name}
             </PokemonName>
             {pokemon.types.map((types, index) => {
               const typeName = types.type.name
@@ -63,9 +63,20 @@ export async function getServerSideProps({ params }) {
   const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
   const data = await resp.json()
 
+  const cleanData = {
+    name: data.name,
+    order: data.order,
+    sprites: {
+      front_default: data.sprites.front_default
+    },
+    types: data.types,
+    abilities: data.abilities,
+    stats: data.stats
+  }
+
   return {
     props: {
-      pokemon: data,
+      pokemon: cleanData,
     }
   }
 }

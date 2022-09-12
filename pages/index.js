@@ -56,7 +56,14 @@ export async function getStaticProps() {
     const res = await fetch(pokemon.url)
     const data = await res.json()
 
-    return data
+    return {
+      name: data.name,
+      order: data.order,
+      sprites: {
+        front_default: data.sprites.front_default
+      },
+      types: data.types
+    }
    })
   )
 
