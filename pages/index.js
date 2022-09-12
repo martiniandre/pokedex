@@ -27,7 +27,7 @@ export default function Home({ pokemons }) {
                     alt={pokemon.name}
                   />
                 </div>
-                <Number>#{pokemon.id}</Number>
+                <Number>#{pokemon.order}</Number>
                 <PokemonName>{pokemon.name}</PokemonName>
                   {pokemon.types.map((types, index) => {
                     const typeName = types.type.name
@@ -49,7 +49,7 @@ export default function Home({ pokemons }) {
   )
 }
 export async function getStaticProps() {
-  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=898`)
   const {results} = await resp.json()
   const pokemons = await Promise.all(
    results.map(async (pokemon) => {

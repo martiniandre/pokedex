@@ -22,8 +22,8 @@ export const Pokemon = styled(Link)`
 export const Background = styled.section`
   background: ${({ backColor }) =>
     backColor.length > 1
-      ? `linear-gradient(${backColor[0]} 20%,${backColor[1]} 60%)`
-      : `linear-gradient(${backColor[0]} 40%,#555 99%)`};
+      ? `linear-gradient(${backColor[0]} 30%,${backColor[1]} 100%)`
+      : `linear-gradient(${backColor[0]} 40%,#999 100%)`};
   border: ${({ backColor }) =>
     backColor.length > 1
       ? `3px solid ${backColor[1]}`
@@ -34,7 +34,7 @@ export const Background = styled.section`
   min-height: 180px;
   cursor: pointer;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
   }
 `
 export const Number = styled.span`
@@ -61,23 +61,20 @@ export const PokemonName = styled.span`
   font-size: 1.1rem;
   font-weight: bold;
   display:block;
-  margin-bottom:10px;
+  margin-bottom:7px;
   color: white;
-
+  margin-right: 10px;
   &::first-letter{
     text-transform: capitalize
   }
 `
 export const Type = styled.span`
-  font-size: 0.85rem;
+  font-size: 1rem;
   padding: 3px 10px;
-  color: white;
+  color:#E1EFF6;
   font-weight: bold;
   background: ${({ backColor }) => (backColor ? backColor : "none")};
-  box-shadow: 1px 1px 4px 1px #333;
+  box-shadow: 2px 2px 2px 1px #111;
   border-radius: 4px;
-
-  &:nth-child(n + 2) {
-    margin-left: 10px;
-  }
+  margin-right: 10px
 `
