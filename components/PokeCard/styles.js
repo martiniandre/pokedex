@@ -53,8 +53,9 @@ export const Number = styled.span`
 `;
 
 export const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
 `;
 
 export const PokemonName = styled.span`

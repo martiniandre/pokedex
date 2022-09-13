@@ -23,7 +23,7 @@ export async function getStaticProps() {
         name: data.name,
         order: data.order,
         sprites: {
-          front_default: data.sprites.front_default,
+          front_default: data.sprites.other.home.front_default,
         },
         types: data.types,
         abilities: data.abilities,
