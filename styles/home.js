@@ -1,5 +1,4 @@
-import styled, { keyframes } from "styled-components";
-import Link from "next/link";
+import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
