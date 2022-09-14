@@ -6,7 +6,7 @@ export default function Home({ pokemons }) {
     <Container>
       <h1 style={{ textAlign: "center", color: "white" }}>Pokedex</h1>
       <Content>
-        <PokeCard pokemons={pokemons} />
+        <PokeCard pokemons={filteredPokemons} />
       </Content>
     </Container>
   );

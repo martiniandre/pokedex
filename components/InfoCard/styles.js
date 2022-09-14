@@ -8,7 +8,6 @@ export const Container = styled.section`
   gap: 1px;
   color: white;
   font-size:1rem;
-   
   strong {
     text-align: start;
   }

@@ -14,4 +14,5 @@ export const Content = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   text-align: center;
+  margin-top: 30px;
 `;
